@@ -1,0 +1,44 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namestore</title>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.4.0/dist/ethers.min.js"></script>
+    <script>
+        async function setName() {
+            const name = document.getElementById('nameInput').value;
+            const response = await fetch('http://localhost:3000/setName', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name })
+            });
+            if (response.ok) {
+                alert('Name set successfully');
+            } else {
+                alert('Failed to set name');
+            }
+        }
+
+        async function getName() {
+            const response = await fetch('http://localhost:3000/getName');
+            const name = await response.text();
+            document.getElementById('nameDisplay').innerText = `Stored Name: ${name}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Namestore</h1>
+    <div>
+        <input type="text" id="nameInput" placeholder="Enter name">
+        <button onclick="setName()">Set Name</button>
+    </div>
+    <div>
+        <button onclick="getName()">Get Name</button>
+        <p id="nameDisplay">Stored Name: </p>
+    </div>
+</body>
+</html>

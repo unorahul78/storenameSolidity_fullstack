@@ -1,0 +1,12 @@
+write a solidity smart contrcat 
+deploy on sepolia
+generate abi key
+copy contract adress
+meta mask wallet adress
+meta mask private key
+alchamy url for sepolia testnet
+create backend(node.js) & frontend(react.js)
+
+intreract  with smart contract using abi and keys
+start server and testne////
+thankyou
